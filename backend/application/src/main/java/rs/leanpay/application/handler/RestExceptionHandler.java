@@ -30,7 +30,7 @@ public class RestExceptionHandler {
     @ResponseBody
     public List<LoanCalculatorError> interestRateLessThenZeroExceptionThrown(InterestRateLessThenZeroException e) {
         LoanCalculatorErrorCode errorCode = e.getErrorCode();
-        return buildBadRequestResponse(new LoanCalculatorError(errorCode.name(), errorCode.getMessageKey().name(), env.getProperty(e.getErrorCode().getMessageKey().name())));
+        return buildBadRequestResponse(new LoanCalculatorError(errorCode.getMessageKey().name(), env.getProperty(e.getErrorCode().getMessageKey().name())));
     }
 
     private <T> List<T> buildBadRequestResponse(T error){

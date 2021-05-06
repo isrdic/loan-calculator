@@ -6,10 +6,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@JsonPropertyOrder({"code", "messageCode", "message"})
+@JsonPropertyOrder({"messageCode", "message"})
 public class LoanCalculatorError {
 
-    private String code;
     private String messageCode;
     private String message;
 
@@ -17,8 +16,7 @@ public class LoanCalculatorError {
         this.message = message;
     }
 
-    public LoanCalculatorError(String code, String messageCode, String message) {
-        this.code = code;
+    public LoanCalculatorError(String messageCode, String message) {
         this.messageCode = messageCode;
         this.message = message;
     }
