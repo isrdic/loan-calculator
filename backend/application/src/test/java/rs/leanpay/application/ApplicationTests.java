@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import rs.leanpay.application.dto.LoanTermType;
 import rs.leanpay.application.dto.SimpleLoanResponse;
 import rs.leanpay.application.service.LoanCalculatorService;
+import rs.leanpay.model.enumeration.LoanTermType;
 
 @SpringBootTest
 class ApplicationTests {

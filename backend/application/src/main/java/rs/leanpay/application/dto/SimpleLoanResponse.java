@@ -12,6 +12,6 @@ import lombok.Setter;
 public class SimpleLoanResponse {
 
     private double monthlyPayment;
-    private double interest;
+    private double totalInterestPaid;
 
 }

@@ -1,4 +1,4 @@
-package rs.leanpay.application.dto;
+package rs.leanpay.model.enumeration;
 
 public enum LoanTermType {
 

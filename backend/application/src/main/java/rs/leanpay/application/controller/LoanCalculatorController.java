@@ -1,15 +1,13 @@
 package rs.leanpay.application.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import rs.leanpay.application.dto.*;
 import rs.leanpay.application.service.LoanCalculatorService;
+import rs.leanpay.model.enumeration.LoanTermType;
+import rs.leanpay.model.enumeration.PaymentFrequencyType;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/loan")
@@ -31,8 +29,14 @@ public class LoanCalculatorController {
         return loanCalculatorService.simpleLoanCalculator(loanAmount, interestRate, loanTerm, loanTermType);
     }
 
+    @GetMapping(value = "/simple-loan-calculator/{graterThen}")
+    public List<SimpleLoanResponse> findByLoanAmountGraterThen(
+            @PathVariable("graterThen") double graterThen) {
+        return loanCalculatorService.findByLoanAmountGraterThen(graterThen);
+    }
+
     @GetMapping(value = "/amortization-schedule-calculator")
-    public Map<String, List<AmortizationScheduleResponse>> amortizationScheduleCalculator(
+    public AmortizationScheduleResponse amortizationScheduleCalculator(
             @RequestParam("loanAmount") double loanAmount,
             @RequestParam("interestRate") double interestRate,
             @RequestParam("numberOfPayments") int numberOfPayments,

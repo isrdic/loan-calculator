@@ -1,8 +1,12 @@
 package rs.leanpay.application.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import rs.leanpay.model.MonthlyAmortization;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -10,9 +14,9 @@ import lombok.Setter;
 //@AllArgsConstructor
 public class AmortizationScheduleResponse {
 
+    @JsonIgnore
     private String templateMessage =
-            "Amortization Schedule\n" +
-            "$ %f at %f % interest"; //\n" +
+            "Amortization Schedule $%f at %f % \\interest";
 //            "with %d %s payments\n" +
 //            "Total Payments: $ %f Total Interest: $ %f";
 
@@ -21,32 +25,24 @@ public class AmortizationScheduleResponse {
 //    private int numberOfPayments;
 //    private PaymentFrequencyType paymentFrequency;
 
-    private double loanAmount;
-    private double interestRate;
-    private int numberOfPayments;
-    private String numberOfPaymentsFrequency;
+//    private double loanAmount;
+//    private double interestRate;
+//    private int numberOfPayments;
+//    private String numberOfPaymentsFrequency;
+
+    private String message;
 
     private double totalPayments;
     private double totalInterest;
 
-    private String message;
+    private List<MonthlyAmortization> amortizations;
 
     public AmortizationScheduleResponse(
-            double loanAmount,
-            double interestRate,
-            int numberOfPayments,
-            String numberOfPaymentsFrequency,
-            double totalPayments,
-            double totalInterest) {
-        this.loanAmount = loanAmount;
-        this.interestRate = interestRate;
-        this.numberOfPayments = numberOfPayments;
-        this.numberOfPaymentsFrequency = numberOfPaymentsFrequency;
+            String message, double totalPayments, double totalInterest, List<MonthlyAmortization> amortizations) {
+        this.message = message;
         this.totalPayments = totalPayments;
         this.totalInterest = totalInterest;
-        this.message =
-                String.format(templateMessage, loanAmount, interestRate
-                );
+        this.amortizations = amortizations;
     }
 
 }

@@ -1,27 +1,41 @@
 package rs.leanpay.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import rs.leanpay.model.enumeration.LoanTermType;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "simple_loan_request")
+@Table(name = "simple_loan")
 public class SimpleLoanEntity {
 
     @Id
     @GeneratedValue
     private Long id;
+
+    // Request parameters
     private Double loanAmount;
     private Double interestRate;
+    private Integer loanTerm;
 
+    @Enumerated(EnumType.STRING)
+    private LoanTermType loanTermType;
+
+    // Response attributes
+    private Double monthlyPayment;
+    private Double totalInteresPaid;
+
+    public SimpleLoanEntity(Double loanAmount, Double interestRate, Integer loanTerm, LoanTermType loanTermType, Double monthlyPayment, Double totalInteresPaid) {
+        this.loanAmount = loanAmount;
+        this.interestRate = interestRate;
+        this.loanTerm = loanTerm;
+        this.loanTermType = loanTermType;
+        this.monthlyPayment = monthlyPayment;
+        this.totalInteresPaid = totalInteresPaid;
+    }
 }
