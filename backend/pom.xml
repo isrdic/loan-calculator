@@ -11,7 +11,7 @@
 
     <groupId>rs.leanpay</groupId>
     <artifactId>backend</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
 
     <name>backend</name>
     <description>Parent module for loan calculator</description>

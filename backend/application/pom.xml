@@ -5,11 +5,11 @@
     <parent>
         <groupId>rs.leanpay</groupId>
         <artifactId>backend</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.1</version>
     </parent>
 
     <artifactId>application</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
 
     <name>application</name>
     <description>Bussies Logic</description>
@@ -24,7 +24,7 @@
         <dependency>
             <groupId>rs.leanpay</groupId>
             <artifactId>model</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>0.0.1</version>
         </dependency>
 
         <dependency>

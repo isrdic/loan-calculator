@@ -5,11 +5,11 @@
     <parent>
         <groupId>rs.leanpay</groupId>
         <artifactId>backend</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.1</version>
     </parent>
 
     <artifactId>model</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>model</name>
     <description>Entities and DB configuration</description>
 
