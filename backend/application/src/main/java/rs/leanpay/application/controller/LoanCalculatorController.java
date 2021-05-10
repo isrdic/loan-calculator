@@ -35,6 +35,12 @@ public class LoanCalculatorController {
         return loanCalculatorService.findSimpleLoanByLoanAmountGraterThen(graterThen);
     }
 
+    @GetMapping(value = "/simple-loan-calculator/{loanTermType}")
+    public List<SimpleLoanResponse> findSimpleLoanByByLoanTermType(
+            @PathVariable("loanTermType") LoanTermType loanTermType) {
+        return loanCalculatorService.findSimpleLoanByByLoanTermType(loanTermType);
+    }
+
     @GetMapping(value = "/amortization-schedule-calculator")
     public AmortizationScheduleResponse amortizationScheduleCalculator(
             @RequestParam("loanAmount") double loanAmount,

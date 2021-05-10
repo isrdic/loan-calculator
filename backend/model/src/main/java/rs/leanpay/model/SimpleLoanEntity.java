@@ -1,8 +1,6 @@
 package rs.leanpay.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import rs.leanpay.model.enumeration.LoanTermType;
 
 import javax.persistence.*;
@@ -10,6 +8,8 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "simple_loan")
 public class SimpleLoanEntity {

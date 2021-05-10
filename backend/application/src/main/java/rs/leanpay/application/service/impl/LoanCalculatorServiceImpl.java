@@ -51,6 +51,12 @@ public class LoanCalculatorServiceImpl implements LoanCalculatorService {
                 simpleLoanRepository.findByLoanAmountGreaterThan(amount));
     }
 
+    @Override
+    public List<SimpleLoanResponse> findSimpleLoanByByLoanTermType(LoanTermType loanTermType) {
+        return SimpleLoanMapper.INSTANCE.toSimpleLoanResponseList(
+                simpleLoanRepository.findByLoanTermType(loanTermType));
+    }
+
     private SimpleLoanResponse calculateSimpleLoan(
             double amount, double interestRate, int loanTerm, LoanTermType loanTermType) {
         if (loanTermType.equals(LoanTermType.years)) {
