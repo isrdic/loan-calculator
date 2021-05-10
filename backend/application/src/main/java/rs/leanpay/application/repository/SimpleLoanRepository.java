@@ -8,5 +8,4 @@ import java.util.List;
 public interface SimpleLoanRepository extends JpaRepository<SimpleLoanEntity, Long> {
 
     List<SimpleLoanEntity> findByLoanAmountGreaterThan(Double amount);
-
 }

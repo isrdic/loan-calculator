@@ -12,10 +12,6 @@ public class LoanCalculatorError {
     private String messageCode;
     private String message;
 
-    public LoanCalculatorError(String message) {
-        this.message = message;
-    }
-
     public LoanCalculatorError(String messageCode, String message) {
         this.messageCode = messageCode;
         this.message = message;

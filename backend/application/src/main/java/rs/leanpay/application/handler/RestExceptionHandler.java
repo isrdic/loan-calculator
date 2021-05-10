@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import rs.leanpay.application.exception.InterestRateLessThenZeroException;
+import rs.leanpay.application.exception.InterestRateException;
 import rs.leanpay.application.exception.LoanCalculatorError;
 import rs.leanpay.application.exception.LoanCalculatorErrorCode;
 
@@ -21,15 +21,19 @@ public class RestExceptionHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RestExceptionHandler.class);
 
-    @Autowired
-    private Environment env;
+    private final Environment env;
 
-    @SuppressWarnings("ConstantConditions")
-    @ExceptionHandler(InterestRateLessThenZeroException.class)
+    @Autowired
+    public RestExceptionHandler(Environment env) {
+        this.env = env;
+    }
+
+    @ExceptionHandler(InterestRateException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-    public List<LoanCalculatorError> interestRateLessThenZeroExceptionThrown(InterestRateLessThenZeroException e) {
+    public List<LoanCalculatorError> interestRateLessThenZeroExceptionThrown(InterestRateException e) {
         LoanCalculatorErrorCode errorCode = e.getErrorCode();
+        LOGGER.debug(env.getProperty(e.getErrorCode().getMessageKey().name()));
         return buildBadRequestResponse(new LoanCalculatorError(errorCode.getMessageKey().name(), env.getProperty(e.getErrorCode().getMessageKey().name())));
     }
 

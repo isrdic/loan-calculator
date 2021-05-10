@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class InterestRateLessThenZeroException extends RuntimeException {
+public class NumberOfPeriodException extends RuntimeException {
 
     private LoanCalculatorErrorCode errorCode;
 

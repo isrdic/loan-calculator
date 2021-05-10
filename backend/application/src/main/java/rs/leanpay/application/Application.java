@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
-//@ComponentScan(basePackages = { "rs.leanpay.application" })
 @PropertySource(value = {"classpath:messages.properties"})
 @EntityScan("rs.leanpay.model")
 public class Application {

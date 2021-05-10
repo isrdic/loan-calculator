@@ -12,10 +12,7 @@ public interface SimpleLoanMapper {
 
     SimpleLoanMapper INSTANCE = Mappers.getMapper(SimpleLoanMapper.class);
 
-    SimpleLoanEntity toSimpleLoanEntity(SimpleLoanResponse simpleLoanResponse);
     SimpleLoanResponse toSimpleLoanResponse(SimpleLoanEntity simpleLoanEntity);
-
-    List<SimpleLoanEntity> toSimpleLoanEntityList(List<SimpleLoanResponse> simpleLoanResponses);
-    List<SimpleLoanResponse> toSimpleLoanResponseList(List<SimpleLoanEntity> simpleLoanEntities);
+    List<SimpleLoanResponse> toSimpleLoanResponseList(List<SimpleLoanEntity> simpleLoanEntityList);
 
 }

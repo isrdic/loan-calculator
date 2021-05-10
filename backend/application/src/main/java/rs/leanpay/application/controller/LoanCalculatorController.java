@@ -32,7 +32,7 @@ public class LoanCalculatorController {
     @GetMapping(value = "/simple-loan-calculator/{graterThen}")
     public List<SimpleLoanResponse> findByLoanAmountGraterThen(
             @PathVariable("graterThen") double graterThen) {
-        return loanCalculatorService.findByLoanAmountGraterThen(graterThen);
+        return loanCalculatorService.findSimpleLoanByLoanAmountGraterThen(graterThen);
     }
 
     @GetMapping(value = "/amortization-schedule-calculator")
@@ -42,5 +42,11 @@ public class LoanCalculatorController {
             @RequestParam("numberOfPayments") int numberOfPayments,
             @RequestParam("paymentFrequency") PaymentFrequencyType paymentFrequencyType) {
         return loanCalculatorService.amortizationScheduleCalculator(loanAmount, interestRate, numberOfPayments, paymentFrequencyType);
+    }
+
+    @GetMapping(value = "/amortization-schedule-calculator/{graterThen}")
+    public List<AmortizationScheduleResponse> findAmortizationScheduleByLoanAmountGraterThen(
+            @PathVariable("graterThen") double graterThen) {
+        return loanCalculatorService.findAmortizationScheduleByLoanAmountGraterThen(graterThen);
     }
 }

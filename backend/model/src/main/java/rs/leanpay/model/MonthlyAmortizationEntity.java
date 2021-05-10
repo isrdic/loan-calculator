@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "monthly_amortization")
-public class MonthlyAmortization {
+public class MonthlyAmortizationEntity {
 
     @Id
     @GeneratedValue
@@ -22,13 +22,12 @@ public class MonthlyAmortization {
     private double interestAmount;
     private double balanceOwed;
 
-
     @ManyToOne(
             targetEntity = AmortizationScheduleEntity.class,
             fetch = FetchType.LAZY)
     private AmortizationScheduleEntity amortizationScheduleEntity;
 
-    public MonthlyAmortization(double paymentAmount, double principalAmount, double interestAmount, double balanceOwed) {
+    public MonthlyAmortizationEntity(double paymentAmount, double principalAmount, double interestAmount, double balanceOwed) {
         this.paymentAmount = paymentAmount;
         this.principalAmount = principalAmount;
         this.interestAmount = interestAmount;
