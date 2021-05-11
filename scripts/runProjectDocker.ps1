@@ -10,6 +10,6 @@ cd loan-calculator\backend
 
 mvn install
 
-cd application\target
+docker build -t loan-calculator .
 
-java -jar application-0.0.1-SNAPSHOT.jar
+docker run -p 8090:8089 loan-calculator
