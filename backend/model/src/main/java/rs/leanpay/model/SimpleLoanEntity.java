@@ -11,7 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "simple_loan")
+@Table
 public class SimpleLoanEntity {
 
     @Id

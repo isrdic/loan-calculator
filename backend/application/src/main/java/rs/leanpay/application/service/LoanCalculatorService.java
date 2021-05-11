@@ -2,7 +2,6 @@ package rs.leanpay.application.service;
 
 import rs.leanpay.application.dto.AmortizationScheduleResponse;
 import rs.leanpay.application.dto.SimpleLoanResponse;
-import rs.leanpay.model.SimpleLoanEntity;
 import rs.leanpay.model.enumeration.LoanTermType;
 import rs.leanpay.model.enumeration.PaymentFrequencyType;
 

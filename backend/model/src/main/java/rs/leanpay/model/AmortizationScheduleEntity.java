@@ -1,8 +1,6 @@
 package rs.leanpay.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import rs.leanpay.model.enumeration.PaymentFrequencyType;
 
 import javax.persistence.*;
@@ -12,8 +10,10 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
-@Table(name = "amortization_schedule")
+@Table
 public class AmortizationScheduleEntity {
 
     @Id
@@ -58,9 +58,15 @@ public class AmortizationScheduleEntity {
         }
     }
 
-    public void addMonthlyAmortization(MonthlyAmortizationEntity monthlyAmortizationEntity){
+    private void addMonthlyAmortization(MonthlyAmortizationEntity monthlyAmortizationEntity){
         amortizationList.add(monthlyAmortizationEntity);
         monthlyAmortizationEntity.setAmortizationScheduleEntity(this);
+    }
+
+    public void addMonthlyAmortizationList(List<MonthlyAmortizationEntity> monthlyAmortizationEntityList) {
+        for (MonthlyAmortizationEntity monthlyAmortizationEntity : monthlyAmortizationEntityList) {
+            this.addMonthlyAmortization(monthlyAmortizationEntity);
+        }
     }
 
 }

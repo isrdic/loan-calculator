@@ -1,7 +1,7 @@
 package rs.leanpay.application.unit.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Ignore;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +22,7 @@ import rs.leanpay.application.controller.LoanCalculatorController;
 import rs.leanpay.application.dto.SimpleLoanResponse;
 import rs.leanpay.application.mapper.SimpleLoanMapper;
 import rs.leanpay.application.service.LoanCalculatorService;
+import rs.leanpay.application.util.ApplicationContextProvider;
 import rs.leanpay.application.util.SimpleLoanCalculatorTestDataUtil;
 import rs.leanpay.model.SimpleLoanEntity;
 import rs.leanpay.model.enumeration.LoanTermType;
@@ -33,7 +34,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@Ignore
 @RunWith(SpringRunner.class)
 @ContextConfiguration
 @WebMvcTest(value = LoanCalculatorController.class)
@@ -41,9 +41,6 @@ public class LoanCalculatorControllerTest {
 
     @Autowired
     ObjectMapper mapper;
-
-//    @Autowired
-//    SimpleLoanCalculatorTestDataUtil simpleLoanCalculatorTestDataUtil;
 
     @Autowired
     private WebApplicationContext context;
@@ -53,6 +50,7 @@ public class LoanCalculatorControllerTest {
 
     MockMvc mockMvc;
 
+    @Before
     public void setUp() {
         mockMvc = MockMvcBuilders
                 .webAppContextSetup(context)
@@ -61,18 +59,12 @@ public class LoanCalculatorControllerTest {
 
     @Test
     public void simpleLoanCalculatorTest() throws Exception {
-//        SimpleLoanResponse simpleLoanResponse = SimpleLoanMapper.INSTANCE.toSimpleLoanResponse(simpleLoanCalculatorTestDataUtil.simpleLoanEntityDB1000());
-        SimpleLoanResponse simpleLoanResponse = SimpleLoanMapper.INSTANCE.toSimpleLoanResponse(SimpleLoanEntity
-                .builder()
-                .loanAmount(20000.00)
-                .interestRate(6.00)
-                .loanTerm(36)
-                .loanTermType(LoanTermType.months)
-                .monthlyPayment(366.99)
-                .totalInteresPaid(876.33)
-                .build());
+        SimpleLoanResponse simpleLoanResponse =
+                SimpleLoanResponse.builder().monthlyPayment(336.99).totalInterestPaid(1011.33).build();
 
-        when(loanCalculatorService.simpleLoanCalculator(any(Double.class), any(Double.class), any(Integer.class), any(LoanTermType.class))).thenReturn(simpleLoanResponse);
+        when(loanCalculatorService.simpleLoanCalculator(
+                any(Double.class), any(Double.class), any(Integer.class), any(LoanTermType.class)))
+                .thenReturn(simpleLoanResponse);
 
         this.mockMvc.perform(get("/loan/simple-loan-calculator")
                 .param("loanAmount", "20000.00")

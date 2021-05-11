@@ -28,10 +28,32 @@ public class SimpleLoanCalculatorTestDataUtil {
         return simpleLoanRepository.save(buildSimpleLoanEntity(1000.00, 9.00, 2, LoanTermType.years, 616.99, 35.00));
     }
 
+    public SimpleLoanEntity simpleLoanEntity1000() {
+        return buildSimpleLoanEntity(1000.00, 3.00, 3, LoanTermType.months, 616.99, 35.00);
+    }
+
+    public SimpleLoanEntity simpleLoanEntity1000WithID() {
+        return buildSimpleLoanEntityWithId(1L, 1000.00, 3.00, 3, LoanTermType.months, 616.99, 35.00);
+    }
+
     private SimpleLoanEntity buildSimpleLoanEntity(
             Double loanAmount, Double interestRate, Integer loanTerm, LoanTermType loanTermType, Double monthlyPayment, Double totalInterestPaid) {
         return SimpleLoanEntity
                 .builder()
+                .loanAmount(loanAmount)
+                .interestRate(interestRate)
+                .loanTerm(loanTerm)
+                .loanTermType(loanTermType)
+                .monthlyPayment(monthlyPayment)
+                .totalInteresPaid(totalInterestPaid)
+                .build();
+    }
+
+    private SimpleLoanEntity buildSimpleLoanEntityWithId(
+            Long id, Double loanAmount, Double interestRate, Integer loanTerm, LoanTermType loanTermType, Double monthlyPayment, Double totalInterestPaid) {
+        return SimpleLoanEntity
+                .builder()
+                .id(id)
                 .loanAmount(loanAmount)
                 .interestRate(interestRate)
                 .loanTerm(loanTerm)
