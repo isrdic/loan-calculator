@@ -12,4 +12,4 @@ mvn install
 
 cd application\target
 
-java -jar application-0.0.1-SNAPSHOT.jar
+java -jar application-0.0.1.jar

@@ -12,4 +12,5 @@ mvn install
 
 docker build -t loan-calculator .
 
-docker run -p 8090:8089 loan-calculator
+#docker run -p 8090:8089 loan-calculator
+docker run -p 8099:8098 loan-calculator
