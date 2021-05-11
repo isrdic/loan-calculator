@@ -46,7 +46,7 @@ public class SimpleLoanCalculatorTestDataUtil {
                 .loanTerm(loanTerm)
                 .loanTermType(loanTermType)
                 .monthlyPayment(monthlyPayment)
-                .totalInteresPaid(totalInterestPaid)
+                .totalInterestPaid(totalInterestPaid)
                 .build();
     }
 
@@ -60,7 +60,7 @@ public class SimpleLoanCalculatorTestDataUtil {
                 .loanTerm(loanTerm)
                 .loanTermType(loanTermType)
                 .monthlyPayment(monthlyPayment)
-                .totalInteresPaid(totalInterestPaid)
+                .totalInterestPaid(totalInterestPaid)
                 .build();
     }
 
