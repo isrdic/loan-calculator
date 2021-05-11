@@ -2,7 +2,7 @@
 
 New-Item -ItemType Directory -Force -Path C:\Users\$currentUser\Desktop\IvanSrdic
 
-cd C:\Users\$currentUser\Desktop\IvanSrdicDocker
+cd C:\Users\$currentUser\Desktop\IvanSrdic
 
 git clone https://github.com/isrdic/loan-calculator.git
 

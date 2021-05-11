@@ -6,7 +6,7 @@
 #ENTRYPOINT ["java","-jar","/application-0.0.1.jar"]
 
 FROM adoptopenjdk/openjdk11:latest
-EXPOSE 8089
+EXPOSE 8090
 ARG JAR_FILE=application/target/application-0.0.1.jar
 ADD ${JAR_FILE} application-0.0.1.jar
 ENTRYPOINT ["java","-jar","/application-0.0.1.jar"]
