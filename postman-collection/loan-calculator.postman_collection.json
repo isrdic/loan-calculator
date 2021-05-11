@@ -1,0 +1,1575 @@
+{
+	"info": {
+		"_postman_id": "14d32975-94be-4f27-ab1b-ac930fadb122",
+		"name": "loan-calculator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "simple-loan-calculator",
+			"item": [
+				{
+					"name": "filter by loan amount greater than",
+					"item": [
+						{
+							"name": "loan amount > 18000",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/simple-loan-calculator/18000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"simple-loan-calculator",
+										"18000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "loan amount > 99000",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/simple-loan-calculator/99000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"simple-loan-calculator",
+										"99000"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "calculate simple",
+					"item": [
+						{
+							"name": "calculate simple months 01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/simple-loan-calculator?loanAmount=20000&interestRate=5&loanTerm=36&loanTermType=months",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"simple-loan-calculator"
+									],
+									"query": [
+										{
+											"key": "loanAmount",
+											"value": "20000"
+										},
+										{
+											"key": "interestRate",
+											"value": "5"
+										},
+										{
+											"key": "loanTerm",
+											"value": "36"
+										},
+										{
+											"key": "loanTermType",
+											"value": "months"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "calculate simple months 02",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/simple-loan-calculator?loanAmount=25000&interestRate=7.5&loanTerm=48&loanTermType=months",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"simple-loan-calculator"
+									],
+									"query": [
+										{
+											"key": "loanAmount",
+											"value": "25000"
+										},
+										{
+											"key": "interestRate",
+											"value": "7.5"
+										},
+										{
+											"key": "loanTerm",
+											"value": "48"
+										},
+										{
+											"key": "loanTermType",
+											"value": "months"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "calculate simple months 03",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/simple-loan-calculator?loanAmount=3000&interestRate=3&loanTerm=12&loanTermType=months",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"simple-loan-calculator"
+									],
+									"query": [
+										{
+											"key": "loanAmount",
+											"value": "3000"
+										},
+										{
+											"key": "interestRate",
+											"value": "3"
+										},
+										{
+											"key": "loanTerm",
+											"value": "12"
+										},
+										{
+											"key": "loanTermType",
+											"value": "months"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "calculate simple years 01",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/simple-loan-calculator?loanAmount=100000&interestRate=8&loanTerm=7&loanTermType=years",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"simple-loan-calculator"
+									],
+									"query": [
+										{
+											"key": "loanAmount",
+											"value": "100000"
+										},
+										{
+											"key": "interestRate",
+											"value": "8"
+										},
+										{
+											"key": "loanTerm",
+											"value": "7"
+										},
+										{
+											"key": "loanTermType",
+											"value": "years"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "calculate simple years 02",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/simple-loan-calculator?loanAmount=375&interestRate=1&loanTerm=1&loanTermType=years",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"simple-loan-calculator"
+									],
+									"query": [
+										{
+											"key": "loanAmount",
+											"value": "375"
+										},
+										{
+											"key": "interestRate",
+											"value": "1"
+										},
+										{
+											"key": "loanTerm",
+											"value": "1"
+										},
+										{
+											"key": "loanTermType",
+											"value": "years"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "calculate simple months InterestRateException",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"  pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/simple-loan-calculator?loanAmount=20000&interestRate=-5&loanTerm=36&loanTermType=months",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"simple-loan-calculator"
+									],
+									"query": [
+										{
+											"key": "loanAmount",
+											"value": "20000"
+										},
+										{
+											"key": "interestRate",
+											"value": "-5"
+										},
+										{
+											"key": "loanTerm",
+											"value": "36"
+										},
+										{
+											"key": "loanTermType",
+											"value": "months"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "calculate simple months NumberOfPeriodException",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"  pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/simple-loan-calculator?loanAmount=20000&interestRate=5&loanTerm=-36&loanTermType=months",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"simple-loan-calculator"
+									],
+									"query": [
+										{
+											"key": "loanAmount",
+											"value": "20000"
+										},
+										{
+											"key": "interestRate",
+											"value": "5"
+										},
+										{
+											"key": "loanTerm",
+											"value": "-36"
+										},
+										{
+											"key": "loanTermType",
+											"value": "months"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "calculate simple years InterestRateException",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"  pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/simple-loan-calculator?loanAmount=20000&interestRate=-5&loanTerm=36&loanTermType=months",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"simple-loan-calculator"
+									],
+									"query": [
+										{
+											"key": "loanAmount",
+											"value": "20000"
+										},
+										{
+											"key": "interestRate",
+											"value": "-5"
+										},
+										{
+											"key": "loanTerm",
+											"value": "36"
+										},
+										{
+											"key": "loanTermType",
+											"value": "months"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "calculate simple years NumberOfPeriodException",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"  pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/simple-loan-calculator?loanAmount=20000&interestRate=5&loanTerm=-36&loanTermType=months",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"simple-loan-calculator"
+									],
+									"query": [
+										{
+											"key": "loanAmount",
+											"value": "20000"
+										},
+										{
+											"key": "interestRate",
+											"value": "5"
+										},
+										{
+											"key": "loanTerm",
+											"value": "-36"
+										},
+										{
+											"key": "loanTermType",
+											"value": "months"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "filter by loan term",
+					"item": [
+						{
+							"name": "loan term = months",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/simple-loan-calculator/loanTerm?loanTermType=months",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"simple-loan-calculator",
+										"loanTerm"
+									],
+									"query": [
+										{
+											"key": "loanTermType",
+											"value": "months"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "loan term = years",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/simple-loan-calculator/loanTerm?loanTermType=years",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"simple-loan-calculator",
+										"loanTerm"
+									],
+									"query": [
+										{
+											"key": "loanTermType",
+											"value": "years"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "amoritzation-schedule-calculator",
+			"item": [
+				{
+					"name": "calculate amortization",
+					"item": [
+						{
+							"name": "calculate amortization daily",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/amortization-schedule-calculator?loanAmount=33000&interestRate=5&numberOfPayments=36&paymentFrequency=Monthly",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"amortization-schedule-calculator"
+									],
+									"query": [
+										{
+											"key": "loanAmount",
+											"value": "33000"
+										},
+										{
+											"key": "interestRate",
+											"value": "5"
+										},
+										{
+											"key": "numberOfPayments",
+											"value": "36"
+										},
+										{
+											"key": "paymentFrequency",
+											"value": "Monthly"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "calculate amortization weekly",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/amortization-schedule-calculator?loanAmount=33000&interestRate=5&numberOfPayments=36&paymentFrequency=Weekly",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"amortization-schedule-calculator"
+									],
+									"query": [
+										{
+											"key": "loanAmount",
+											"value": "33000"
+										},
+										{
+											"key": "interestRate",
+											"value": "5"
+										},
+										{
+											"key": "numberOfPayments",
+											"value": "36"
+										},
+										{
+											"key": "paymentFrequency",
+											"value": "Weekly"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "calculate amortization biweekly",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/amortization-schedule-calculator?loanAmount=33000&interestRate=5&numberOfPayments=36&paymentFrequency=Biweekly",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"amortization-schedule-calculator"
+									],
+									"query": [
+										{
+											"key": "loanAmount",
+											"value": "33000"
+										},
+										{
+											"key": "interestRate",
+											"value": "5"
+										},
+										{
+											"key": "numberOfPayments",
+											"value": "36"
+										},
+										{
+											"key": "paymentFrequency",
+											"value": "Biweekly"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "calculate amortization semimonth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/amortization-schedule-calculator?loanAmount=33000&interestRate=5&numberOfPayments=36&paymentFrequency=SemiMonth",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"amortization-schedule-calculator"
+									],
+									"query": [
+										{
+											"key": "loanAmount",
+											"value": "33000"
+										},
+										{
+											"key": "interestRate",
+											"value": "5"
+										},
+										{
+											"key": "numberOfPayments",
+											"value": "36"
+										},
+										{
+											"key": "paymentFrequency",
+											"value": "SemiMonth"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "calculate amortization monthly",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/amortization-schedule-calculator?loanAmount=33000&interestRate=5&numberOfPayments=36&paymentFrequency=Monthly",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"amortization-schedule-calculator"
+									],
+									"query": [
+										{
+											"key": "loanAmount",
+											"value": "33000"
+										},
+										{
+											"key": "interestRate",
+											"value": "5"
+										},
+										{
+											"key": "numberOfPayments",
+											"value": "36"
+										},
+										{
+											"key": "paymentFrequency",
+											"value": "Monthly"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "calculate amortization bimonthly",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/amortization-schedule-calculator?loanAmount=33000&interestRate=5&numberOfPayments=36&paymentFrequency=Bimonthly",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"amortization-schedule-calculator"
+									],
+									"query": [
+										{
+											"key": "loanAmount",
+											"value": "33000"
+										},
+										{
+											"key": "interestRate",
+											"value": "5"
+										},
+										{
+											"key": "numberOfPayments",
+											"value": "36"
+										},
+										{
+											"key": "paymentFrequency",
+											"value": "Bimonthly"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "calculate amortization quarterly",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/amortization-schedule-calculator?loanAmount=33000&interestRate=5&numberOfPayments=36&paymentFrequency=Quarterly",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"amortization-schedule-calculator"
+									],
+									"query": [
+										{
+											"key": "loanAmount",
+											"value": "33000"
+										},
+										{
+											"key": "interestRate",
+											"value": "5"
+										},
+										{
+											"key": "numberOfPayments",
+											"value": "36"
+										},
+										{
+											"key": "paymentFrequency",
+											"value": "Quarterly"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "calculate amortization semiannual",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/amortization-schedule-calculator?loanAmount=33000&interestRate=5&numberOfPayments=36&paymentFrequency=SemiAnnual",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"amortization-schedule-calculator"
+									],
+									"query": [
+										{
+											"key": "loanAmount",
+											"value": "33000"
+										},
+										{
+											"key": "interestRate",
+											"value": "5"
+										},
+										{
+											"key": "numberOfPayments",
+											"value": "36"
+										},
+										{
+											"key": "paymentFrequency",
+											"value": "SemiAnnual"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "calculate amortization annual",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/amortization-schedule-calculator?loanAmount=33000&interestRate=5&numberOfPayments=36&paymentFrequency=Annual",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"amortization-schedule-calculator"
+									],
+									"query": [
+										{
+											"key": "loanAmount",
+											"value": "33000"
+										},
+										{
+											"key": "interestRate",
+											"value": "5"
+										},
+										{
+											"key": "numberOfPayments",
+											"value": "36"
+										},
+										{
+											"key": "paymentFrequency",
+											"value": "Annual"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "filter by loan amount greater then",
+					"item": [
+						{
+							"name": "loan amount > 32000",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/amortization-schedule-calculator/32000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"amortization-schedule-calculator",
+										"32000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "loan amount > 35000",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/amortization-schedule-calculator/35000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"amortization-schedule-calculator",
+										"35000"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "filter by payment frequency",
+					"item": [
+						{
+							"name": "payment frequency = daily",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/amortization-schedule-calculator/paymentFrequencyType?paymentFrequencyType=Daily",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"amortization-schedule-calculator",
+										"paymentFrequencyType"
+									],
+									"query": [
+										{
+											"key": "paymentFrequencyType",
+											"value": "Daily"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "payment frequency = weekly",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/amortization-schedule-calculator/paymentFrequencyType?paymentFrequencyType=Weekly",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"amortization-schedule-calculator",
+										"paymentFrequencyType"
+									],
+									"query": [
+										{
+											"key": "paymentFrequencyType",
+											"value": "Weekly"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "payment frequency = biweekly",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/amortization-schedule-calculator/paymentFrequencyType?paymentFrequencyType=Biweekly",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"amortization-schedule-calculator",
+										"paymentFrequencyType"
+									],
+									"query": [
+										{
+											"key": "paymentFrequencyType",
+											"value": "Biweekly"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "payment frequency = semimonth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/amortization-schedule-calculator/paymentFrequencyType?paymentFrequencyType=SemiMonth",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"amortization-schedule-calculator",
+										"paymentFrequencyType"
+									],
+									"query": [
+										{
+											"key": "paymentFrequencyType",
+											"value": "SemiMonth"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "payment frequency = monthly",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/amortization-schedule-calculator/paymentFrequencyType?paymentFrequencyType=Monthly",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"amortization-schedule-calculator",
+										"paymentFrequencyType"
+									],
+									"query": [
+										{
+											"key": "paymentFrequencyType",
+											"value": "Monthly"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "payment frequency = bimonthly",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/amortization-schedule-calculator/paymentFrequencyType?paymentFrequencyType=Bimonthly",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"amortization-schedule-calculator",
+										"paymentFrequencyType"
+									],
+									"query": [
+										{
+											"key": "paymentFrequencyType",
+											"value": "Bimonthly"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "payment frequency = quarterly",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/amortization-schedule-calculator/paymentFrequencyType?paymentFrequencyType=Quarterly",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"amortization-schedule-calculator",
+										"paymentFrequencyType"
+									],
+									"query": [
+										{
+											"key": "paymentFrequencyType",
+											"value": "Quarterly"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "payment frequency = semiannual",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/amortization-schedule-calculator/paymentFrequencyType?paymentFrequencyType=SemiAnnual",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"amortization-schedule-calculator",
+										"paymentFrequencyType"
+									],
+									"query": [
+										{
+											"key": "paymentFrequencyType",
+											"value": "SemiAnnual"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "payment frequency = annual",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"  pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/loan/amortization-schedule-calculator/paymentFrequencyType?paymentFrequencyType=Annual",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"loan",
+										"amortization-schedule-calculator",
+										"paymentFrequencyType"
+									],
+									"query": [
+										{
+											"key": "paymentFrequencyType",
+											"value": "Annual"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "PING",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

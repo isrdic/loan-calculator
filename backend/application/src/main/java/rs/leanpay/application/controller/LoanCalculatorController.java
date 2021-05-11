@@ -57,8 +57,8 @@ public class LoanCalculatorController {
         return loanCalculatorService.findAmortizationScheduleByLoanAmountGraterThen(graterThen);
     }
 
-    @GetMapping(value = "/amortization-schedule/loanTerm")
-    public List<AmortizationScheduleResponse> findSimpleLoanByByPaymentFrequencyType(
+    @GetMapping(value = "/amortization-schedule-calculator/paymentFrequencyType")
+    public List<AmortizationScheduleResponse> findAmortizationScheduleByPaymentFrequencyType(
             @RequestParam("paymentFrequencyType") PaymentFrequencyType paymentFrequencyType) {
         return loanCalculatorService.findAmortizationScheduleByPaymentFrequencyType(paymentFrequencyType);
     }
