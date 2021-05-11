@@ -19,7 +19,6 @@ public class SimpleLoanEntity {
     @GeneratedValue
     private Long id;
 
-    // Request parameters
     @NotNull
     private Double loanAmount;
 
@@ -33,19 +32,18 @@ public class SimpleLoanEntity {
     @NotNull
     private LoanTermType loanTermType;
 
-    // Response attributes
     @NotNull
     private Double monthlyPayment;
 
     @NotNull
-    private Double totalInteresPaid;
+    private Double totalInterestPaid;
 
-    public SimpleLoanEntity(Double loanAmount, Double interestRate, Integer loanTerm, LoanTermType loanTermType, Double monthlyPayment, Double totalInteresPaid) {
+    public SimpleLoanEntity(Double loanAmount, Double interestRate, Integer loanTerm, LoanTermType loanTermType, Double monthlyPayment, Double totalInterestPaid) {
         this.loanAmount = loanAmount;
         this.interestRate = interestRate;
         this.loanTerm = loanTerm;
         this.loanTermType = loanTermType;
         this.monthlyPayment = monthlyPayment;
-        this.totalInteresPaid = totalInteresPaid;
+        this.totalInterestPaid = totalInterestPaid;
     }
 }

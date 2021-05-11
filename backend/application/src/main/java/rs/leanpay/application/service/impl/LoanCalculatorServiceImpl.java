@@ -149,7 +149,7 @@ public class LoanCalculatorServiceImpl implements LoanCalculatorService {
                         round(amountPaid, 2),
                         round(interestPaid, 2),
                         Math.abs(round(loanBalance, 2)),
-                        instalmentDay.plusMonths(period/2)));
+                        instalmentDay.plusMonths(1+period/2)));
             } else if (paymentFrequencyType.equals(PaymentFrequencyType.Monthly)) {
                 amortizationEntities.add(new MonthlyAmortizationEntity(
                         round(periodPayment, 2),
