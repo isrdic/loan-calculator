@@ -10,7 +10,7 @@ import rs.leanpay.application.exception.util.LoanCalculatorErrorCode;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class InterestRateException extends RuntimeException {
+public class PaymentFrequencyTypeException extends RuntimeException {
 
     private LoanCalculatorErrorCode errorCode;
 

@@ -1,5 +1,6 @@
 package rs.leanpay.model;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 import rs.leanpay.model.enumeration.PaymentFrequencyType;
 
@@ -21,15 +22,24 @@ public class AmortizationScheduleEntity {
     private Long id;
 
     // Request parameters
+    @NotNull
     private Double loanAmount;
+
+    @NotNull
     private Double interestRate;
+
+    @NotNull
     private Integer numberOfPayments;
 
     @Enumerated(EnumType.STRING)
+    @NotNull
     private PaymentFrequencyType paymentFrequencyType;
 
     // Response attributes
+    @NotNull
     private Double totalPayments;
+
+    @NotNull
     private Double totalInterest;
 
     @OneToMany(

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import rs.leanpay.application.exception.util.LoanCalculatorErrorCode;
 
 @Getter
 @Setter

@@ -1,4 +1,4 @@
-package rs.leanpay.application.exception;
+package rs.leanpay.application.exception.util;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Getter;

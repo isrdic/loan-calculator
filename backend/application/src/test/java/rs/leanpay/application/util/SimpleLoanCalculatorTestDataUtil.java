@@ -6,6 +6,7 @@ import rs.leanpay.application.repository.SimpleLoanRepository;
 import rs.leanpay.model.SimpleLoanEntity;
 import rs.leanpay.model.enumeration.LoanTermType;
 
+@SuppressWarnings({"SameParameterValue", "UnusedReturnValue", "unused"})
 @Component
 public class SimpleLoanCalculatorTestDataUtil {
 

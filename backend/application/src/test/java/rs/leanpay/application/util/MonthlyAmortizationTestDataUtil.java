@@ -6,6 +6,7 @@ import rs.leanpay.model.MonthlyAmortizationEntity;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings({"unused", "SameParameterValue"})
 @Component
 public class MonthlyAmortizationTestDataUtil {
 

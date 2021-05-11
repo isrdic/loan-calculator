@@ -22,4 +22,5 @@ public enum PaymentFrequencyType {
         this.description = description;
         this.numberOfPaymentsPerYear = numberOfPaymentsPerYear;
     }
+
 }

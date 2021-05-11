@@ -9,7 +9,7 @@ import lombok.*;
 @Builder
 public class SimpleLoanResponse {
 
-    private double monthlyPayment;
-    private double totalInterestPaid;
+    private Double monthlyPayment;
+    private Double totalInterestPaid;
 
 }

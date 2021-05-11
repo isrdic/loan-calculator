@@ -1,19 +1,21 @@
 package rs.leanpay.application.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import java.time.LocalDate;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class MonthlyAmortization {
 
-    private double paymentAmount;
-    private double principalAmount;
-    private double interestAmount;
-    private double balanceOwed;
+    private Double paymentAmount;
+    private Double principalAmount;
+    private Double interestAmount;
+    private Double balanceOwed;
+
+    private LocalDate instalmentDay;
 
 }

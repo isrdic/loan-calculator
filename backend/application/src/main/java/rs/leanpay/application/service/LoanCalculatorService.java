@@ -11,9 +11,9 @@ public interface LoanCalculatorService {
 
     SimpleLoanResponse simpleLoanCalculator(double loanAmount, double interestRate, int loanTerm, LoanTermType loanTermType);
     List<SimpleLoanResponse> findSimpleLoanByLoanAmountGraterThen(double amount);
-    List<SimpleLoanResponse> findSimpleLoanByByLoanTermType(LoanTermType loanTermType);
+    List<SimpleLoanResponse> findSimpleLoanByLoanTermType(LoanTermType loanTermType);
 
     AmortizationScheduleResponse amortizationScheduleCalculator(double loanAmount, double interestRate, int numberOfPayments, PaymentFrequencyType paymentFrequencyType);
     List<AmortizationScheduleResponse> findAmortizationScheduleByLoanAmountGraterThen(double amount);
-
+    List<AmortizationScheduleResponse> findAmortizationScheduleByPaymentFrequencyType(PaymentFrequencyType paymentFrequencyType);
 }

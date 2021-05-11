@@ -2,7 +2,8 @@ package rs.leanpay.application.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import rs.leanpay.application.dto.*;
+import rs.leanpay.application.dto.AmortizationScheduleResponse;
+import rs.leanpay.application.dto.SimpleLoanResponse;
 import rs.leanpay.application.service.LoanCalculatorService;
 import rs.leanpay.model.enumeration.LoanTermType;
 import rs.leanpay.model.enumeration.PaymentFrequencyType;
@@ -35,10 +36,10 @@ public class LoanCalculatorController {
         return loanCalculatorService.findSimpleLoanByLoanAmountGraterThen(graterThen);
     }
 
-    @GetMapping(value = "/simple-loan-calculator/{loanTermType}")
-    public List<SimpleLoanResponse> findSimpleLoanByByLoanTermType(
-            @PathVariable("loanTermType") LoanTermType loanTermType) {
-        return loanCalculatorService.findSimpleLoanByByLoanTermType(loanTermType);
+    @GetMapping(value = "/simple-loan-calculator/loanTerm")
+    public List<SimpleLoanResponse> findSimpleLoanByLoanTermType(
+            @RequestParam("loanTermType") LoanTermType loanTermType) {
+        return loanCalculatorService.findSimpleLoanByLoanTermType(loanTermType);
     }
 
     @GetMapping(value = "/amortization-schedule-calculator")
@@ -54,5 +55,11 @@ public class LoanCalculatorController {
     public List<AmortizationScheduleResponse> findAmortizationScheduleByLoanAmountGraterThen(
             @PathVariable("graterThen") double graterThen) {
         return loanCalculatorService.findAmortizationScheduleByLoanAmountGraterThen(graterThen);
+    }
+
+    @GetMapping(value = "/amortization-schedule/loanTerm")
+    public List<AmortizationScheduleResponse> findSimpleLoanByByPaymentFrequencyType(
+            @RequestParam("paymentFrequencyType") PaymentFrequencyType paymentFrequencyType) {
+        return loanCalculatorService.findAmortizationScheduleByPaymentFrequencyType(paymentFrequencyType);
     }
 }

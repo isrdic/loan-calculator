@@ -1,8 +1,10 @@
 package rs.leanpay.model;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -17,20 +19,31 @@ public class MonthlyAmortizationEntity {
     @GeneratedValue
     private Long id;
 
-    private double paymentAmount;
-    private double principalAmount;
-    private double interestAmount;
-    private double balanceOwed;
+    @NotNull
+    private Double paymentAmount;
+
+    @NotNull
+    private Double principalAmount;
+
+    @NotNull
+    private Double interestAmount;
+
+    @NotNull
+    private Double balanceOwed;
+
+    private LocalDate instalmentDay;
 
     @ManyToOne(
             targetEntity = AmortizationScheduleEntity.class,
-            fetch = FetchType.LAZY)
+            fetch = FetchType.LAZY,
+            optional = false)
     private AmortizationScheduleEntity amortizationScheduleEntity;
 
-    public MonthlyAmortizationEntity(double paymentAmount, double principalAmount, double interestAmount, double balanceOwed) {
+    public MonthlyAmortizationEntity(Double paymentAmount, Double principalAmount, Double interestAmount, Double balanceOwed, LocalDate instalmentDay) {
         this.paymentAmount = paymentAmount;
         this.principalAmount = principalAmount;
         this.interestAmount = interestAmount;
         this.balanceOwed = balanceOwed;
+        this.instalmentDay = instalmentDay;
     }
 }

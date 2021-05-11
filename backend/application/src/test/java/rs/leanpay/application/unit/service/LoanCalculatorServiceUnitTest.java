@@ -10,7 +10,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import rs.leanpay.application.dto.AmortizationScheduleResponse;
 import rs.leanpay.application.dto.SimpleLoanResponse;
 import rs.leanpay.application.exception.InterestRateException;
-import rs.leanpay.application.exception.LoanCalculatorErrorCode;
+import rs.leanpay.application.exception.util.LoanCalculatorErrorCode;
 import rs.leanpay.application.exception.NumberOfPeriodException;
 import rs.leanpay.application.repository.AmortizationScheduleRepository;
 import rs.leanpay.application.repository.SimpleLoanRepository;
@@ -30,7 +30,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class LoanCalculatorServiceTest {
+public class LoanCalculatorServiceUnitTest {
 
     @Mock
     private SimpleLoanRepository simpleLoanRepository;

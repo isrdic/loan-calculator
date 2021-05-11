@@ -1,23 +1,26 @@
 package rs.leanpay.application.service.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.leanpay.application.dto.AmortizationScheduleResponse;
-import rs.leanpay.application.exception.NumberOfPeriodException;
-import rs.leanpay.application.mapper.AmortizationScheduleMapper;
-import rs.leanpay.application.repository.AmortizationScheduleRepository;
-import rs.leanpay.model.AmortizationScheduleEntity;
-import rs.leanpay.model.MonthlyAmortizationEntity;
-import rs.leanpay.model.enumeration.PaymentFrequencyType;
 import rs.leanpay.application.dto.SimpleLoanResponse;
 import rs.leanpay.application.exception.InterestRateException;
-import rs.leanpay.application.exception.LoanCalculatorErrorCode;
+import rs.leanpay.application.exception.util.LoanCalculatorErrorCode;
+import rs.leanpay.application.exception.NumberOfPeriodException;
+import rs.leanpay.application.mapper.AmortizationScheduleMapper;
 import rs.leanpay.application.mapper.SimpleLoanMapper;
+import rs.leanpay.application.repository.AmortizationScheduleRepository;
 import rs.leanpay.application.repository.SimpleLoanRepository;
 import rs.leanpay.application.service.LoanCalculatorService;
+import rs.leanpay.model.AmortizationScheduleEntity;
+import rs.leanpay.model.MonthlyAmortizationEntity;
 import rs.leanpay.model.SimpleLoanEntity;
 import rs.leanpay.model.enumeration.LoanTermType;
+import rs.leanpay.model.enumeration.PaymentFrequencyType;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +32,8 @@ public class LoanCalculatorServiceImpl implements LoanCalculatorService {
 
     private final SimpleLoanRepository simpleLoanRepository;
     private final AmortizationScheduleRepository amortizationScheduleRepository;
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoanCalculatorServiceImpl.class);
 
     @Autowired
     public LoanCalculatorServiceImpl(SimpleLoanRepository simpleLoanRepository, AmortizationScheduleRepository amortizationScheduleRepository) {
@@ -52,7 +57,7 @@ public class LoanCalculatorServiceImpl implements LoanCalculatorService {
     }
 
     @Override
-    public List<SimpleLoanResponse> findSimpleLoanByByLoanTermType(LoanTermType loanTermType) {
+    public List<SimpleLoanResponse> findSimpleLoanByLoanTermType(LoanTermType loanTermType) {
         return SimpleLoanMapper.INSTANCE.toSimpleLoanResponseList(
                 simpleLoanRepository.findByLoanTermType(loanTermType));
     }
@@ -82,7 +87,7 @@ public class LoanCalculatorServiceImpl implements LoanCalculatorService {
         validateParameteres(interestRate, numberOfPayments);
 
         double periodInterestRate = interestRate / 100 / paymentFrequencyType.getNumberOfPaymentsPerYear();
-        return calculateAmortizationSchedule(loanAmount, periodInterestRate, numberOfPayments);
+        return calculateAmortizationSchedule(loanAmount, periodInterestRate, numberOfPayments, paymentFrequencyType);
     }
 
     @Override
@@ -91,8 +96,13 @@ public class LoanCalculatorServiceImpl implements LoanCalculatorService {
                 amortizationScheduleRepository.findByLoanAmountGreaterThan(amount));
     }
 
-    @SuppressWarnings("CommentedOutCode")
-    private AmortizationScheduleResponse calculateAmortizationSchedule(double loanAmount, double periodInterestRate, int numberOfPayments) {
+    @Override
+    public List<AmortizationScheduleResponse> findAmortizationScheduleByPaymentFrequencyType(PaymentFrequencyType paymentFrequencyType) {
+        return AmortizationScheduleMapper.INSTANCE.toAmortizationScheduleResponseList(
+                amortizationScheduleRepository.findByPaymentFrequencyType(paymentFrequencyType));
+    }
+
+    private AmortizationScheduleResponse calculateAmortizationSchedule(double loanAmount, double periodInterestRate, int numberOfPayments, PaymentFrequencyType paymentFrequencyType) {
 
         double periodPayment = calculatePeriodPayment(loanAmount, periodInterestRate, numberOfPayments);
 
@@ -100,29 +110,86 @@ public class LoanCalculatorServiceImpl implements LoanCalculatorService {
         double totalInterest = totalPayments - loanAmount;
 
         double loanBalance = loanAmount;
-//        double interestBalance = totalInterest;
-//        double totalBalance = totalPayments;
 
         double interestPaid, amountPaid;
         List<MonthlyAmortizationEntity> amortizationEntities = new ArrayList<>();
+
+        LocalDate instalmentDay = LocalDate.now();
 
         for (int period = 1; period <= numberOfPayments; period++) {
             // Na preostali dug ide kamata za period
             interestPaid = loanBalance * periodInterestRate;
             amountPaid = periodPayment - interestPaid;
 
-            // KOLIKO JE UKUPNO OSTALO
-//            totalBalance -= periodPayment;
-
-            // KOLIKO JE OSTALO GLAVNOG DUGA I KAMATE
             loanBalance -= amountPaid;
-//            interestBalance -= interestPaid;
+            if (paymentFrequencyType.equals(PaymentFrequencyType.Daily)) {
+                amortizationEntities.add(new MonthlyAmortizationEntity(
+                        round(periodPayment, 2),
+                        round(amountPaid, 2),
+                        round(interestPaid, 2),
+                        Math.abs(round(loanBalance, 2)),
+                        instalmentDay.plusDays(period)));
+            } else if (paymentFrequencyType.equals(PaymentFrequencyType.Weekly)) {
+                amortizationEntities.add(new MonthlyAmortizationEntity(
+                        round(periodPayment, 2),
+                        round(amountPaid, 2),
+                        round(interestPaid, 2),
+                        Math.abs(round(loanBalance, 2)),
+                        instalmentDay.plusWeeks(period)));
+            } else if (paymentFrequencyType.equals(PaymentFrequencyType.Biweekly)) {
+                amortizationEntities.add(new MonthlyAmortizationEntity(
+                        round(periodPayment, 2),
+                        round(amountPaid, 2),
+                        round(interestPaid, 2),
+                        Math.abs(round(loanBalance, 2)),
+                        instalmentDay.plusWeeks(period*2L)));
+            } else if (paymentFrequencyType.equals(PaymentFrequencyType.SemiMonth)) {
+                amortizationEntities.add(new MonthlyAmortizationEntity(
+                        round(periodPayment, 2),
+                        round(amountPaid, 2),
+                        round(interestPaid, 2),
+                        Math.abs(round(loanBalance, 2)),
+                        instalmentDay.plusMonths(period/2)));
+            } else if (paymentFrequencyType.equals(PaymentFrequencyType.Monthly)) {
+                amortizationEntities.add(new MonthlyAmortizationEntity(
+                        round(periodPayment, 2),
+                        round(amountPaid, 2),
+                        round(interestPaid, 2),
+                        Math.abs(round(loanBalance, 2)),
+                        instalmentDay.plusMonths(period)));
+            } else if (paymentFrequencyType.equals(PaymentFrequencyType.Bimonthly)) {
+                amortizationEntities.add(new MonthlyAmortizationEntity(
+                        round(periodPayment, 2),
+                        round(amountPaid, 2),
+                        round(interestPaid, 2),
+                        Math.abs(round(loanBalance, 2)),
+                        instalmentDay.plusMonths(period* 2L -1)));
+            } else if (paymentFrequencyType.equals(PaymentFrequencyType.Quarterly)) {
+                amortizationEntities.add(new MonthlyAmortizationEntity(
+                        round(periodPayment, 2),
+                        round(amountPaid, 2),
+                        round(interestPaid, 2),
+                        Math.abs(round(loanBalance, 2)),
+                        instalmentDay.plusMonths(3L *period-2)));
+            } else if (paymentFrequencyType.equals(PaymentFrequencyType.SemiAnnual)) {
+                amortizationEntities.add(new MonthlyAmortizationEntity(
+                        round(periodPayment, 2),
+                        round(amountPaid, 2),
+                        round(interestPaid, 2),
+                        Math.abs(round(loanBalance, 2)),
+                        instalmentDay.plusMonths(6L *period-5)));
+            }else if (paymentFrequencyType.equals(PaymentFrequencyType.Annual)) {
+                amortizationEntities.add(new MonthlyAmortizationEntity(
+                        round(periodPayment, 2),
+                        round(amountPaid, 2),
+                        round(interestPaid, 2),
+                        Math.abs(round(loanBalance, 2)),
+                        instalmentDay.plusYears(period)));
+            } else {
+                LOGGER.error("Payment Frequency Type does not exist");
+                throw new InterestRateException(LoanCalculatorErrorCode.ERR_001);
+            }
 
-            amortizationEntities.add(new MonthlyAmortizationEntity(
-                    round(periodPayment, 2),
-                    round(amountPaid, 2),
-                    round(interestPaid, 2),
-                    Math.abs(round(loanBalance, 2))));
         }
 
         AmortizationScheduleEntity amortizationScheduleEntity = new AmortizationScheduleEntity(
